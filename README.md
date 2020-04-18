@@ -21,4 +21,6 @@ The following references are recommended when working on OSX and you want to und
 
 [5]  C. Wolf. Yosys Open SYnthesis Suite.  https://opencores.org/websvn/filedetails?repname=socgenpath=%2Fsocgen%2Ftrunk%2Ftools%2Fyosys%2Fyosyspresentation.pdf,2016.
 
+[6] D. Li.A “normal” sed on Mac.  https://daoyuan.li/a-normal-sed-on-mac/, 2013
+
 
