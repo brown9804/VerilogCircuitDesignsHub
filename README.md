@@ -23,4 +23,4 @@ The following references are recommended when working on OSX and you want to und
 
 [6] D. Li.A “normal” sed on Mac.  https://daoyuan.li/a-normal-sed-on-mac/, 2013
 
-
+[7] W Snyder.Verilog-mode.  www.veripool.org/projects/verilog-mode/wiki/Documentation, 2020
