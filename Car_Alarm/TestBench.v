@@ -1,4 +1,4 @@
-/ The testbench is related to the behavior and logical structure
+// The testbench is related to the behavior and logical structure
 // where each module receives signals from a Test sequence
 // which are sent to a data monitor.
 
