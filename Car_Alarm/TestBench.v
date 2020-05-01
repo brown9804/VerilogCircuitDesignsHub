@@ -9,7 +9,7 @@
 // Includes verilog files
 // Can be omitted and called from the testbench
 `include "Alarm_Behavioral_Description.v"
-`include "Alarm_Estruc_LogicGates_Description.v"
+`include "Alarm_Struc_LogicGates_Description.v"
 `include "tester.v"
 
 // Testbench module
