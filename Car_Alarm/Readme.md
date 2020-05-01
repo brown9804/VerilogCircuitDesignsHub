@@ -13,7 +13,7 @@ Absolut_path_of_the_folder$ make
 * Use the yosys synthesizer:
 
 ~~~~
-Absolut_path_of_the_folder$ make hosts
+Absolut_path_of_the_folder$ make yosys
 ~~~~
 
 * Use the gtkwave viewer:
