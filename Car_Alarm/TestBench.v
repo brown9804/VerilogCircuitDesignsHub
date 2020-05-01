@@ -20,21 +20,21 @@ module TestsBench_module;
 	wire SignalAlarmBehavioralDescription, LogicGatesStructuralAlarmSignal, CarLightsOnSign, OpenDoorSign, IgnitionSignalOn;
 
 // Behavioral alarm description
-	Alarm_Behavioral_Description	a_cond(	.CarAlarmSignal		(SignalAlarmBehavioralDescription),
+	Alarm_Behavioral_Description	Behavioral_testbench(	.CarAlarmSignal		(SignalAlarmBehavioralDescription),
 					.CarLightsOnSign		(CarLightsOnSign),
 					.OpenDoorSign		(OpenDoorSign),
 					.IgnitionSignalOn		(IgnitionSignalOn)
 	);
 
 // Structural description of alarm
-	Alarm_Estruc_LogicGates_Description	a_estr(	.CarAlarmSignal		(LogicGatesStructuralAlarmSignal),
+	Alarm_Struct_LogicGates_Description	Struct_testbench(	.CarAlarmSignal		(LogicGatesStructuralAlarmSignal),
 					.CarLightsOnSign		(CarLightsOnSign),
 					.OpenDoorSign		(OpenDoorSign),
 					.IgnitionSignalOn		(IgnitionSignalOn)
 	);
 
 // Tester: signal generator and monitor
-	tester tester_(		.LogicGatesStructuralAlarmSignal	(LogicGatesStructuralAlarmSignal),
+	tester tester_testbench(		.LogicGatesStructuralAlarmSignal	(LogicGatesStructuralAlarmSignal),
 					.SignalAlarmBehavioralDescription	(SignalAlarmBehavioralDescription),
 					.CarLightsOnSign		(CarLightsOnSign),
 					.OpenDoorSign		(OpenDoorSign),
