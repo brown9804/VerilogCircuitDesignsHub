@@ -1,6 +1,6 @@
 #Read the structurals
 
-read_verilog Alarm_Estruc_LogicGates_Description.v
+read_verilog Alarm_Behavioral_Description.v
 
 
 #This performs a series of trivial optimizations and cleanups
