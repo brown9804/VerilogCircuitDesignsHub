@@ -1,4 +1,4 @@
-#Read the structurals
+#Read the Behavioral
 
 read_verilog Alarm_Behavioral_Description.v
 
