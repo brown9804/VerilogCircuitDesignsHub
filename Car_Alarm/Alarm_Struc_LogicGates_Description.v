@@ -21,14 +21,14 @@ module Alarm_Estruc_LogicGates_Description (
 
 // Verilog primitive "not" gate, propagation delay = 1
 // Departure, first port
-	not #1 gate1(	x,
+	not #1 notgate(	x,
 // Inputs, second port and others
 			IgnitionSignalOn);
 
 
 // Verilog primitive "and" gate, propagation delay = 1
 // Departure, first port
-	and #1 gate2(	CarAlarmSignal,
+	and #1 andgate(	CarAlarmSignal,
 // Inputs, second port and others
 			CarLightsOnSign,
 			OpenDoorSign,
