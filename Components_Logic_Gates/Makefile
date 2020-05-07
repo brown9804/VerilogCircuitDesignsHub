@@ -44,3 +44,12 @@ $(VCDelements).vcd $(TESTBENCHelements)_log.txt: $(TESTBENCHelements).vvp
 .PHONY: gtkwaveelements
 gtkwaveelements: $(VCDelements).vcd
 	/Applications/gtkwave.app/Contents/Resources/bin/gtkwave $^
+
+
+#******************************************************************************
+# 						CLEAN
+#******************************************************************************
+
+.PHONY: clean
+clean:
+	rm -rf *.vvp *.vcd *_log.txt *.out *syn.v
