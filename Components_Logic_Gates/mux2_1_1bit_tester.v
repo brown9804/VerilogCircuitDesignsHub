@@ -1,4 +1,4 @@
-// Se define el modulo tester para mux2_1_1bit
+// The tester module is defined for mux2_1_1bit
 
 module mux2_1_1bit_tester(
 output reg in1_mux1bits_tester,
@@ -16,7 +16,8 @@ begin
 	in2_mux1bits_tester = 0;
 	selec_mux1bits_tester = 0;
 
-  // Declarando repeticiones
+
+	// Declaring repetitions
 	in1_mux1bits_tester <= #10 1'b0; in2_mux1bits_tester <= #10 1'b0; selec_mux1bits_tester <= #10 1'b0;
 	in1_mux1bits_tester <= #10 1'b0; in2_mux1bits_tester <= #10 1'b0; selec_mux1bits_tester <= #10 1'b1;
 	in1_mux1bits_tester <= #10 1'b0; in2_mux1bits_tester <= #10 1'b1; selec_mux1bits_tester <= #10 1'b0;
