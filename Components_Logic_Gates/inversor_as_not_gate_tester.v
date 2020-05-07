@@ -13,12 +13,13 @@ input wire tester_out_not
     $dumpfile("inversor_as_not_gate_tester.vcd");
     $dumpvars;
 
-
+    tester_in_not = 0;
+    #5 tester_in_not = 1;
     // We set the input of the inverter to 0
-    #15 tester_in_not = 0;
+    #10 tester_in_not = 0;
 
     if (tester_out_not != 1)
-      #10 $display("There is an error, a value of 1 was expected and it was read:% d", tester_out_not);
+      #10 $display("There is an error, I was expecting a value of 1 and it read: %d", tester_out_not);
 
 
     // After another 5 units of time, we change the input
@@ -26,9 +27,9 @@ input wire tester_out_not
 
     // After 5 more time units, we check if there is a 0 in the output
     if (tester_out_not != 0)
-      #10 $display("There is an error, a value of 0 was expected and it was read:% d", tester_out_not);
+      #10 $display("There is an error, I was expecting a value of 0 and it read: %d", tester_out_not);
 
-    #15 $display("End of simulated tests");
+    #15 $display("Simulated tests end");
     #25 $finish;
   end
   endmodule
