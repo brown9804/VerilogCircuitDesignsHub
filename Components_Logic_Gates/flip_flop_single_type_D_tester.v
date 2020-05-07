@@ -21,7 +21,7 @@ begin
 // It is used to specify which variables are to be put in the dump file. The bibliography mentions that the way
 // simple to do it is only with $ dumpvars since this way they all assign them to the test bench
 	$dumpvars;
-D_tester = 0;
+	D_tester = 0;
 
 // The number of repetitions is stipulated, these are the ones that go #
   D_tester <= #10 1; clk_tester <= #6 1;
