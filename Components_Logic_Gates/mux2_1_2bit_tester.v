@@ -1,4 +1,4 @@
-// The tester module is defined for mux2_1_2bit
+// The tester module is defined for mux2_1_2bit with the mux 2:1 of one bit 
 
 module mux2_1_2bit_tester(
 output reg [1:0] in1_mux2bits_tester,
