@@ -1,13 +1,13 @@
-// Definiendo el modulo para la compuerta OR de dos entradas
+// Defining the module for the two input OR gate
 
 module or_two_input_gate(
-// entradas
+// inputs
 input in_or1,
 input in_or2,
-//salida
+//outputs
 output out_or
 );
 
-//Utilizando la definicion de verilog para una compuerta or
+// Using verilog's definition for a gate or
 or #4.6 or_gate(in_or1, in_or2, out_or);
 endmodule
