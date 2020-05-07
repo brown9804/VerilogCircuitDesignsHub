@@ -1,30 +1,30 @@
-// Tester para NOT
+// Tester for NOT
   module inversor_as_not_gate_tester(
-//Registro de 1 bit conectado a la entrada del inversor
+// 1 bit register connected to the input of the inverter
 output reg tester_in_not,
-// Cable conectado a la salida del inversor
+// Cable connected to the inverter output
 input wire tester_out_not
 );
 
-  //Inicio de las pruebas
+// Start of tests
   initial begin
 
-    // Archivo para almacenar los resultados
+    // File to store the results
     $dumpfile("inversor_as_not_gate_tester.vcd");
     $dumpvars;
 
 
-    // Ponemos la entrada del inversor a 0
+    // We set the input of the inverter to 0
     #15 tester_in_not = 0;
 
     if (tester_out_not != 1)
       #10 $display("Hay un error, se esperaba un valor de 1 y se leyó: %d", tester_out_not);
 
 
-    // Después de otras 5 unidades de tiempo, cambiamos la entrada
+    // After another 5 units of time, we change the input
     #15 tester_in_not = 1;
 
-    // Después de 5 unidades de tiempo más, verificamos si hay un 0 en la salida
+    // After 5 more time units, we check if there is a 0 in the output
     if (tester_out_not != 0)
       #10 $display("Hay un error, se esperaba un valor de 0 y se leyó: %d", tester_out_not);
 
