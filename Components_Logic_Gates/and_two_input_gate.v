@@ -1,13 +1,13 @@
-// Definiendo el modulo para la compuerta AND de dos entradas
+// Defining the module for the two input AND gate
 
 module and_two_input_gate(
-// entradas
+// inputs
 input in1_and_gate,
 input in2_and_gate,
-//salida
+//outputs
 output out_and_gate
 );
 
-//Utilizando la definicion de verilog para una compuerta or
+// Using verilog's definition for a gate or
 and #4.3 and_gate(out_and_gate, in1_and_gate, in2_and_gate);
 endmodule
