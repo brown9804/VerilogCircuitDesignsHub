@@ -1,4 +1,4 @@
-// Creating module for two bit mux 2: 1
+// Creating module for two bit mux 2:1 using mux 2:1 one bit
 `include "mux2_1_1bit.v"
 
 module mux2_1_2bit(
