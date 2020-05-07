@@ -1,3 +1,4 @@
+// Module of FF
 module flip_flop_single_type_D(
 	input clk,
 	input   D,
