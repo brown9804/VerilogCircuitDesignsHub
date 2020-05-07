@@ -1,4 +1,5 @@
-// Creating a module for mux 2: 1 of a bit
+// Creating a module for mux 2: 1 of a bit using logic
+// gates created in this same PATH
 
 `include "and_two_input_gate.v"
 `include "or_two_input_gate.v"
