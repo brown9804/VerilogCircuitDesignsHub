@@ -31,9 +31,9 @@ wire in1_AND_testbench, in2_AND_testbench, out_AND_testbench;
 wire in1_OR_testbench, in2_OR_testbench, out_OR_testbench;
 wire d_FF_testbench, q_FF_testbench, clk_testbench;
 wire in_NOT_testbench, out_NOT_testbench;
-wire out_1bit_testbench, in1_1bit_testbench, in2_1bit_testbench, select_1bit_testbench;
-wire [1:0] out_2bit_testbench, in1_2bit_testbench, in2_2bit_testbench;
-wire select_2bit_testbench;
+wire out_mux_1bit, in1_mux_1bit, in2_mux_1bit, select_mux_1bit;
+wire [1:0] out_mux_2bit, in1_mux_2bit, in2_mux_2bit;
+wire select_mux_2bit;
 
 
 // Since there are 6 elements and two files per element we have 12 modules to import ...
@@ -58,7 +58,7 @@ and_two_input_gate_tester	and_two_input_gate_tester_testbench(.out_and_gate_test
 // 3. OR GATE
 
 // connecting module and gate
-or_two_input_gate	or_two_input_gate_testbench(.out_or		(out_AND_testbench),
+or_two_input_gate	or_two_input_gate_testbench(.out_or		(out_OR_testbench),
 	              .in_or1		(in1_OR_testbench),
 								.in_or2		(in2_OR_testbench)
 
@@ -103,31 +103,31 @@ inversor_as_not_gate_tester inversor_as_not_gate_tester_testbench(.tester_out_no
 );
 
 // 9. MUX 2:1 1 BIT
-mux2_1_1bit mux2_1_1bit_testbench(.out_mux1bit (out_1bit_testbench),
-.in1_mux2_1_1bit (in1_1bit_testbench),
-.in2_mux2_1_1bit (in2_1bit_testbench),
-.selec_1bit (select_1bit_testbench)
+mux2_1_1bit mux2_1_1bit_testbench(.out_mux1bit (out_mux_1bit),
+.in1_mux2_1_1bit (in1_mux_1bit),
+.in2_mux2_1_1bit (in2_mux_1bit),
+.selec_1bit (select_mux_1bit)
 );
 
 // 10. MUX 2:1 1 BIT TESTER
-mux2_1_1bit_tester mux2_1_1bit_tester_testbench(.out_mux1bits_tester (out_mux1bit_testbench),
-.in1_mux1bits_tester (in1_mux1bit_testbench),
-.in2_mux1bits_tester (in2_mux1bit_testbench),
-.selec_mux1bits_tester (selec_mux1bit_testbench)
+mux2_1_1bit_tester mux2_1_1bit_tester_testbench(.out_mux1bits_tester (out_mux_1bit),
+.in1_mux1bits_tester (in1_mux_1bit),
+.in2_mux1bits_tester (in2_mux_1bit),
+.selec_mux1bits_tester (select_mux_1bit)
 );
 
 // 11. MUX 2:1 2 BIT
-mux2_1_2bit mux2_1_2bit_testbench(.out_mux2bit (out_2bit_testbench),
-.in1_mux2_1_2bit (in1_2bit_testbench),
-.in2_mux2_1_2bit (in2_2bit_testbench),
-.selec_2bit (select_2bit_testbench)
+mux2_1_2bit mux2_1_2bit_testbench(.out_mux2bit (out_mux_2bit),
+.in1_mux2_1_2bit (in1_mux_2bit),
+.in2_mux2_1_2bit (in2_mux_2bit),
+.selec_2bit (select_mux_2bit)
 );
 
 // 12. MUX 2:1 2 BIT TESTER
-mux2_1_2bit_tester mux2_1_2bit_tester_testbench(.out_mux2bits_tester (out_2bit_testbench),
-.in1_mux2bits_tester (in1_2bit_testbench),
-.in2_mux2bits_tester (in2_2bit_testbench),
-.selec_mux2bits_tester (select_2bit_testbench)
+mux2_1_2bit_tester mux2_1_2bit_tester_testbench(.out_mux2bits_tester (out_mux_2bit),
+.in1_mux2bits_tester (in1_mux_2bit),
+.in2_mux2bits_tester (in2_mux_2bit),
+.selec_mux2bits_tester (select_mux_2bit)
 );
 
 endmodule
