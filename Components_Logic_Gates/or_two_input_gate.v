@@ -9,5 +9,5 @@ output out_or
 );
 
 // Using verilog's definition for a gate or
-or #4.6 or_gate(in_or1, in_or2, out_or);
+or #4.6 or_gate(out_or, in_or1, in_or2);
 endmodule
