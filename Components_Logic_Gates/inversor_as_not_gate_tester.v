@@ -18,7 +18,7 @@ input wire tester_out_not
     #15 tester_in_not = 0;
 
     if (tester_out_not != 1)
-      #10 $display("Hay un error, se esperaba un valor de 1 y se leyó: %d", tester_out_not);
+      #10 $display("There is an error, a value of 1 was expected and it was read:% d", tester_out_not);
 
 
     // After another 5 units of time, we change the input
@@ -26,9 +26,9 @@ input wire tester_out_not
 
     // After 5 more time units, we check if there is a 0 in the output
     if (tester_out_not != 0)
-      #10 $display("Hay un error, se esperaba un valor de 0 y se leyó: %d", tester_out_not);
+      #10 $display("There is an error, a value of 0 was expected and it was read:% d", tester_out_not);
 
-    #15 $display("Terminan las pruebas simuladas");
+    #15 $display("End of simulated tests");
     #25 $finish;
   end
   endmodule
