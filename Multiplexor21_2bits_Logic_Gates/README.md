@@ -8,7 +8,7 @@ Includes:
 4. FLIP FLOP TYPE-D and tester
 5. MUX2:1 1 BIT and tester
 6. MUX2:1 2 BITS and tester
-7. Structural desing based on MUX2:1 2 BITS
+7. Structural desing based on MUX2:1 2 BITS and FLIP FLOP TYPE-D 
 7. TestBench 
 
 * If you want to simulate HDL:
