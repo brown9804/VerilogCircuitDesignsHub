@@ -1,3 +1,4 @@
+// Module for NOT gate 
 module inversor_as_not_gate(
 // Both output and input are wires
 input in_not,
