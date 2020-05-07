@@ -1,32 +1,31 @@
-// Creando banco de pruebas para los siguientes elementos
-// and_two_input_gate, or_two_input_gate, inversor_as_not_gate,
-// inversor_as_not_gate, mux_2_1_2bit, mux2_1_2bit
+// Creating test bench for the following elements
+// and_two_input_gate, or_two_input_gate, inverter_as_not_gate,
+// inverter_as_not_gate, mux_2_1_2bit, mux2_1_2bit
 
-// escala	unidad temporal medida para los retardos y simulacion (time_unit) / define como se
-// redondean los valores de retardo antes de usarse en la simulacion(time_precision)
+// scale time unit measured for delays and simulation (time_unit) / define as
+// round the delay values before being used in the simulation (time_precision)
 `timescale 	1ns / 1ns
 
-// Incluyendo archivos
+// Including files
 `include "and_two_input_gate_tester.v"
 `include "or_two_input_gate_tester.v"
 `include "flip_flop_single_type_D.v"
 `include "flip_flop_single_type_D_tester.v"
 `include "inversor_as_not_gate_tester.v"
-//`include "mux2_1_1bit.v"
 `include "mux2_1_2bit.v"
 `include "mux2_1_1bit_tester.v"
 `include "mux2_1_2bit_tester.v"
 
 
 module BancoPruebas_Elementos; // Testbench
-// Por lo general, las senales en el banco de pruebas son wires.
-// No almacenan un valor, son manejadas por otras instancias de modulos.
-// Dado que requieren coincidir con el tamaño de las entradas y salidas se debe asignar con su tamano
-// definido en los modulos
+// Usually the signals in the test bench are wires.
+// They do not store a value, they are handled by other module instances.
+// Since they require matching the size of the inputs and outputs, they must be assigned their size
+// defined in the modules
 
-// Si define formato de cantidad, se recomienda mantenerlo en el mismo formato siendo el
-// mismo utilizado en el modulo para la cantidad de bits -- [1:0] ---, otra forma de hacerlo es con
-// [0:1]
+// If you define quantity format, it is recommended to keep it in the same format being the
+// same used in the module for the number of bits - [1: 0] ---, another way to do it is with
+// [0: 1]
 
 wire in1_AND_testbench, in2_AND_testbench, out_AND_testbench;
 wire in1_OR_testbench, in2_OR_testbench, out_OR_testbench;
@@ -37,11 +36,11 @@ wire [1:0] out_2bit_testbench, in1_2bit_testbench, in2_2bit_testbench;
 wire select_2bit_testbench;
 
 
-// Dado que son 6 elementos y dos archivos por elemento tenemos 12 modulos que importar...
+// Since there are 6 elements and two files per element we have 12 modules to import ...
 
 // 1. AND GATE
 
-// Conectando modulo and gate
+// connecting module and gate
 and_two_input_gate	and_two_input_gate_testbench(.out_and_gate		(out_AND_testbench),
 								.in1_and_gate		(in1_AND_testbench),
 								.in2_and_gate		(in2_AND_testbench)
@@ -50,7 +49,7 @@ and_two_input_gate	and_two_input_gate_testbench(.out_and_gate		(out_AND_testbenc
 
 // 2. AND GATE TESTER
 
-// Generador de senales y monitor
+// Signal generator and monitor
 and_two_input_gate_tester	and_two_input_gate_tester_testbench(.out_and_gate_tester		(out_AND_testbench),
 								.in1_and_gate_tester		(in1_AND_testbench),
 								.in2_and_gate_tester		(in2_AND_testbench)
@@ -58,7 +57,7 @@ and_two_input_gate_tester	and_two_input_gate_tester_testbench(.out_and_gate_test
 
 // 3. OR GATE
 
-// Conectando modulo and gate
+// connecting module and gate
 or_two_input_gate	or_two_input_gate_testbench(.out_or		(out_AND_testbench),
 	              .in_or1		(in1_OR_testbench),
 								.in_or2		(in2_OR_testbench)
@@ -68,24 +67,24 @@ or_two_input_gate	or_two_input_gate_testbench(.out_or		(out_AND_testbench),
 
 // 4. OR GATE TESTER
 
-// Generador de senales y monitor
+// Signal generator and monitor
 or_two_input_gate_tester	or_two_input_gate_tester_testbench(.out_or_tester		(out_OR_testbench),
 								.in_or1_tester		(in1_OR_testbench),
 								.in_or2_tester		(in2_OR_testbench)
 );
 
 
-// 5. FLIP-FLIP
+// 5. FLIP-FLOP
 
-//Conectando el modulo de Flip Flop
+// Connecting the Flip Flop module
 flip_flop_single_type_D flip_flop_testbench(.Q (q_FF_testbench),
               .D (d_FF_testbench),
               .clk (clk_testbench)
 );
 
-// 6. FLIP-FLIP TESTER
+// 6. FLIP-FLOP TESTER
 
-//  Realizando las conexiones del tester
+// Making the tester connections
 flip_flop_single_type_D_tester flip_flop_tester_testbench(.Q_tester (q_FF_testbench),
 							.D_tester (d_FF_testbench),
 							.clk_tester (clk_testbench)
@@ -93,7 +92,7 @@ flip_flop_single_type_D_tester flip_flop_tester_testbench(.Q_tester (q_FF_testbe
 
 // 7. NOT GATE
 
-// Conectando modulo de NOT gate
+// Connecting NOT gate module
 inversor_as_not_gate inversor_as_not_gate_testbench(.out_not (out_NOT_testbench),
              .in_not (in_NOT_testbench)
 );
