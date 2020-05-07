@@ -8,6 +8,6 @@ input in2_and_gate,
 output out_and_gate
 );
 
-// Using verilog's definition for a gate or
+// Using verilog's definition for a OR GATE
 and #4.3 and_gate(out_and_gate, in1_and_gate, in2_and_gate);
 endmodule
