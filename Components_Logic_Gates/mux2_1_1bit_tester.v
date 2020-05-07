@@ -1,4 +1,5 @@
-// The tester module is defined for mux2_1_1bit
+// The tester module is defined for mux2_1_1bit using logic gates created before in 
+// this same folder
 
 module mux2_1_1bit_tester(
 output reg in1_mux1bits_tester,
