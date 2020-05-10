@@ -46,3 +46,6 @@ Absolut_path_of_the_folder$ make lint
 ~~~~
 Absolut_path_of_the_folder$ make clean
 ~~~~
+
+### Important:
+Read the makefile because it's using a path to access Gtkwave on OSX
