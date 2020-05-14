@@ -24,14 +24,17 @@ reg [1:0] cable_conexion;
 always @(*)
 // block initial
     begin
+        
         if(selector == 0) begin
           cable_conexion = data_in0;
         end // end if 
+        
         else begin
             if (selector == 1)begin 
               cable_conexion = data_in1;
             end // end if 
         end // end else begin
+        
     end // end begin if
 
 
@@ -39,14 +42,17 @@ always @(*)
 // basic memory for sequential logic operations.
 // For input 0 and 1 - output
 always @ (posedge clk) begin
+    
     if (reset_L == 1) begin 
          data_out <= cable_conexion;
     end // end if
+    
       else begin
           if (reset_L == 0) begin 
           data_out <= 0;
           end // end if
       end //end else begin
-      end // end begin if
+    
+ end // end begin if
 
 endmodule
