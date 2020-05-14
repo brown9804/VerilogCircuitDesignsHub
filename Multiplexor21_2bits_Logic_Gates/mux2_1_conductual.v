@@ -26,11 +26,13 @@ reg [1:0] cable_conexion;
 always @(*)
 // begin block
     begin
-        if(selector == 0)
+        if(selector == 0) begin
           cable_conexion = data_in0;
+        end // end if 
         else begin
-            if (selector == 1)
+            if (selector == 1) begin 
               cable_conexion = data_in1;
+            end // end if     
         end
     end
 
