@@ -17,7 +17,7 @@ reg [1:0] cable_conexion;
 
 
 
-// Defining reset for Flip Flops, always @ (*) is used because
+// Always @ (*) is used because
 // it is recommended for create a combinational block (combinational logic),
 // when no memory is required in the block - no flops. The always @ (*)
 // allows to avoid fleas
@@ -40,8 +40,9 @@ always @(*)
     end // end begin 
 
 
-// In order to define flip flops: this being a two-state (flip-flop) device, which serves as
-// basic memory for sequential logic operations.
+// Defining reset for Flip Flops
+// In order to define flip flops: this being a two-state (flip-flop) device, 
+// which serves as basic memory for sequential logic operations.
 
 // For input 0 and 1 - output
 always @ (posedge clk) begin
