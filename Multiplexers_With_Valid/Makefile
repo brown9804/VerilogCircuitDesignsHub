@@ -48,9 +48,8 @@ all:
 # as the tool that allows to provide the specifications to carry
 # out a physical component which is being modeled.
 # 	Example of command:
-# iverilog -o ./vvp/TestBench_21_2.vvp ./TestBenchAUTONST/TestBench_21_2.v
-# Its automatic, because each time you are asked for a vvp
-# you need one with con.v
+# iverilog -o tb_mux21_2b.vvp TestBench_21_2.v
+# vvp tb_mux21_2b.vvp > tb_mux21_2b_log.txt
 
 ### 					GTKWAVE   		use $make gtkwave#
 # We can define it as a visualization of simulation results
