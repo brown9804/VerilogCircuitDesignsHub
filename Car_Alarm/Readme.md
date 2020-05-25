@@ -1,6 +1,6 @@
-# Readme for Car Alarm 
+# Readme for Car's Passive Security
 
-Device that detects the lights on in a car and emits an alarm when the driver turns it off and leaves it. It is considered a low cost, compatible with a car battery, therefore it is required to be low consumption. It is considered important to emphasize that the ignition in a car is when the air and the fuel mix, allowing to sustain the chemical reaction that occurs by means of the heat that a reaction emits when it becomes sufficient.
+Device that detects the lights on in a car and emits a sound when the driver turns it off and leaves it. It is considered a low cost, compatible with a car battery, therefore it is required to be low consumption. It is considered important to emphasize that the ignition in a car is when the air and the fuel mix, allowing to sustain the chemical reaction that occurs by means of the heat that a reaction emits when it becomes sufficient.
 
 If you want to run the program, it is necessary to consider that the automated tasks are found through the make, therefore the following is followed:
 
