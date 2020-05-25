@@ -4,29 +4,31 @@ Device that detects the lights on in a car and emits a sound when the driver tur
 
 If you want to run the program, it is necessary to consider that the automated tasks are found through the make, therefore the following is followed:
 
-* If you want to simulate HDL:
-
-~~~~
-Absolut_path_of_the_folder$ make
-~~~~
-
 * Use the yosys synthesizer:
 
 ~~~~
 Absolut_path_of_the_folder$ make yosys
 ~~~~
 
+* Apply the GNU sed function: (for this you must read the make since the file where sed is applied is not found in this folder since it was a copy of one of those present)
+
+~~~~
+Absolut_path_of_the_folder$ make replace
+~~~~
+
+
+
+* If you want to simulate HDL:
+
+~~~~
+Absolut_path_of_the_folder$ make
+~~~~
+
+
 * Use the gtkwave viewer:
 
 ~~~~
 Absolut_path_of_the_folder$ make gtkwave
-~~~~
-
-
-* Apply the GNU sed function: (for this you must read the make since the file where sed is applied is not found in this folder since it was a copy of one of those present)
-
-~~~~
-Absolut_path_of_the_folder$ make sed
 ~~~~
 
 
