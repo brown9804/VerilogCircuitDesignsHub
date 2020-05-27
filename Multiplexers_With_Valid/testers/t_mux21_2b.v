@@ -3,8 +3,8 @@
 // timna.brown@ucr.ac.cr
 
 
-`ifndef TESTER21_2B
-`define TESTER21_2B
+`ifndef T_MUX21_2B
+`define T_MUX21_2B
 
 
 // The tester module is defined
