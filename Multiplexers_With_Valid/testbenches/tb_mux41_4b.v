@@ -1,3 +1,7 @@
+// Belinda Brown Ramírez
+// Mayo, 2020
+// timna.brown@ucr.ac.cr
+
 `ifndef TB_MUX41_4B
 `define TB_MUX41_4B
 
