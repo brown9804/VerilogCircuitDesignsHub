@@ -2,8 +2,8 @@
 // Mayo, 2020
 // timna.brown@ucr.ac.cr
 
-`ifndef TESTER41_4B
-`define TESTER41_4B
+`ifndef T_MUX41_4B
+`define T_MUX41_4B
 
 //                            TESTER
 
