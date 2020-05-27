@@ -1,2 +1,7 @@
+	What for?
 
-	This folder is needed because if where the output files will be the synthesized behavioral descriptions as structural description created by yosys 
+	This folder is needed because 
+	if where the output files will 
+	be the synthesized behavioral 
+	descriptions as structural 
+	description created by yosys 
