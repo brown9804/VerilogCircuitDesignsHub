@@ -1,0 +1,2 @@
+
+	This folder is needed because if where the output files will be the diagram of the synthesized behavioral descriptions 
