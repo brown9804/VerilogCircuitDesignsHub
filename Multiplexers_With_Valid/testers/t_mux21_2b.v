@@ -1,3 +1,8 @@
+// Belinda Brown Ramírez
+// Mayo, 2020
+// timna.brown@ucr.ac.cr
+
+
 `ifndef TESTER21_2B
 `define TESTER21_2B
 
