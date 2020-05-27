@@ -1,4 +1,4 @@
-#Verilog
+# 			Verilog proyect 
 
 # Making verilog makefile
 # Makefile to simulate Verilog HDL designs under OSX.
