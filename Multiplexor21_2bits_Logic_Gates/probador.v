@@ -79,7 +79,6 @@ begin
 
 // The following test # 2 is performed
     @(posedge clk_probador);
-  // Once the first clock cycle has passed the signals
   // In order for the signals to go through all their possible values
   {data_in0_probador, data_in1_probador} <= {data_in0_probador, data_in1_probador} + 2'b1;
    selector_probador <= selector_probador + 1;
@@ -87,7 +86,6 @@ begin
 
    // The following test # 2 is performed
     @(posedge clk_probador);
-  // Once the first clock cycle has passed the signals
   // In order for the signals to go through all their possible values
   {data_in0_probador, data_in1_probador} <= {data_in0_probador, data_in1_probador} + 2'b1;
   {reset_L_probador, selector_probador} <= {reset_L_probador, selector_probador} + 1;
