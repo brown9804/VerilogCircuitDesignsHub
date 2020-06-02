@@ -19,7 +19,7 @@ module BancoPruebamux2_1_2bits_reset_ff; // Testbench
 wire [1:0] data_out_banco_conduc, data_out_banco_struc, data_in0_banco_conduc, data_in1_banco_conduc;
 wire reset_L_banco_conduc, clk_banco_conduc, selector_banco_conduc;
 
-// Behavioral alarm description
+// Behavioral description
 mux21	a_cond(	.data_out		(data_out_banco_conduc),
 								.data_in0		(data_in0_banco_conduc),
 								.data_in1		(data_in1_banco_conduc),
