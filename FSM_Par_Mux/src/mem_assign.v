@@ -19,14 +19,14 @@ parameter WORD_SIZE = 4
 
 reg [WORD_SIZE-1:0] memory;
 
-    always @ (posedge clk) begin
+    always @ (*) begin
         if(reset==0) begin
-            mem_data_out <= 0;
-            memory <= 0;
+            mem_data_out = 0;
+            memory = 0;
         end
         else begin
-            memory <= mem_data_in;
-            mem_data_out <= memory;
+            memory = mem_data_in;
+            mem_data_out = memory;
         end
     end
 
