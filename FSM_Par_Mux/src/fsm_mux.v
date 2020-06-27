@@ -93,24 +93,24 @@ always @ (posedge clk)
       lsw <= bus_data_in[WORD_NUM -1:0]; // 4:0
       msw <=  bus_data_in[BUS_SIZE-1:3*WORD_SIZE]; // 15:12
       // Waveform logic
-      if (state == 0) begin // state reset
+      if (state == RESET_STATE) begin // state reset = 0
         error_in <= 0;
       end // end reset
       ////////////////////////////////////////////
-      else if (state == 1) begin // state FIST_PKT
+      else if (state == FIST_PKT) begin // state FIST_PKT = 1
         error_in <=0;
       end // end state FIST_PKT
       ////////////////////////////////////////////
-      else if (state == 2) begin // state REG_PKT
+      else if (state == REG_PKT) begin // state REG_PKT = 2
         error_in <= 0;
       end // end state REG_PKT
       ////////////////////////////////////////////
-      else if (state == 3) begin // state F_ERROR
+      else if (state == F_ERROR) begin // state F_ERROR = 3
         error_in <= 1;
       end // end state F_ERROR
       ////////////////////////////////////////////
-      else if (state == 4) begin // state SEQ_ERROR
-      error_in                   <= 1;
+      else if (state == SEQ_ERROR) begin // state SEQ_ERROR = 4
+      error_in   <= 1;
       end
       else begin
         error_in <= 0;
