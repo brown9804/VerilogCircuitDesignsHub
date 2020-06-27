@@ -17,14 +17,14 @@ parameter WORD_NUM = BUS_SIZE / WORD_SIZE
   output reg reset,
   // Inputs
   input [BUS_SIZE-1:0] bus_data_out,
-  input nxt_state,
-  input state_control,
+  input [3:0] nxt_state,
+  input [3:0]state_control,
   input nxt_error,
   input error,
   // Syn
   input [BUS_SIZE-1:0] bus_data_out_s,
-  input nxt_state_s,
-  input state_control_s,
+  input [3:0] nxt_state_s,
+  input [3:0] state_control_s,
   input nxt_error_s,
   input error_s);
 
