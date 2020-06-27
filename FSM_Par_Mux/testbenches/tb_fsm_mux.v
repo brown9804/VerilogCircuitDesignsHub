@@ -36,11 +36,14 @@ module TestBench; // Testbench
 wire  clk, reset;
 wire [15:0] bus_data_in_TB;
 
-wire nxt_state_BTB, error_BTB;
-wire nxt_state_STB, error_STB;
+wire [3:0] nxt_state_BTB;
+wire [3:0] nxt_state_STB;
 
-wire state_control_BTB;
-wire state_control_STB;
+wire error_BTB;
+wire error_STB;
+
+wire [3:0] state_control_BTB;
+wire [3:0] state_control_STB;
 
 wire nxt_error_BTB;
 wire nxt_error_STB;
