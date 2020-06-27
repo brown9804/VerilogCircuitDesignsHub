@@ -26,8 +26,8 @@ parameter WORD_NUM = BUS_SIZE / WORD_SIZE
   input [BUS_SIZE-1:0] bus_data_in,
   input reset,
   output reg [BUS_SIZE-1:0] bus_data_out,
-  output reg nxt_state,
-  output reg state_control,
+  output reg [3:0] nxt_state,
+  output reg [3:0] state_control,
   output reg nxt_error,
   output reg error
 );
@@ -38,17 +38,16 @@ wire [BUS_SIZE-1:0] out_data;
 genvar i;
 
 //******* for fsm
-parameter RESET_STATE = 0;
-parameter FIST_PKT = 1;
-parameter REG_PKT = 2 ;
-parameter F_ERROR = 3;
-parameter SEQ_ERROR = 4;
+parameter RESET_STATE = 4'h0;
+parameter FIST_PKT = 4'h1;
+parameter REG_PKT = 4'h2 ;
+parameter F_ERROR = 4'h3;
+parameter SEQ_ERROR = 4'h4;
 
-reg next_state, state;
-reg next_error;
+reg [3:0] state;
 reg error_in;
-reg [WORD_SIZE-1:0] lsw;
-reg [WORD_SIZE-1:0] msw;
+reg [WORD_SIZE-1:0] lsw; // Is 0x...#
+reg [WORD_SIZE-1:0] msw; // Is 0xF the right one
 ///////////////////// Control Logic /////////////////////
 generate
 for (i=0; i < WORD_NUM; i=i+1) begin : MEMORY
@@ -83,61 +82,105 @@ endgenerate
 always @ (posedge clk)
   begin
      // Reset synchronous
-     if (reset==0) // If reset in LOW nonblobking assing zero
+     if (reset == 0) // If reset in LOW nonblobking assing zero
        begin
-        next_state<= 0;
-        state <= 0;
-        next_error <= 0;
+        state <= RESET_STATE;
         error_in <= 0;
        end // end reset zero
-
-    else begin
-      state <= next_state;
-      error_in <= next_error;
-      lsw <= bus_data_in[0:WORD_NUM -1]; // 0:4
-      msw <=  bus_data_in[BUS_SIZE-1:2*WORD_SIZE]; // 15:11
+// Logic Bits: 15, 14, 13, 12,          11, 10, 9, 8,      7 , 6, 5, 4,    3,2, 1, 0
+    else begin // if data in 0xFFFF XXXX YYYY ####
+      state <= nxt_state;
+      lsw <= bus_data_in[WORD_NUM -1:0]; // 4:0
+      msw <=  bus_data_in[BUS_SIZE-1:3*WORD_SIZE]; // 15:12
       // Waveform logic
       if (state == 0) begin // state reset
         error_in <= 0;
-        next_error <= 0;
-      end // end first
-      else if (state == 1) begin // state 0xF...0
+      end // end reset
+      ////////////////////////////////////////////
+      else if (state == 1) begin // state FIST_PKT
+        error_in <=0;
+      end // end state FIST_PKT
+      ////////////////////////////////////////////
+      else if (state == 2) begin // state REG_PKT
         error_in <= 0;
-        next_error <= 0;
-        if (lsw != 4'hF) begin
-          next_state <= F_ERROR;
-        end
-        else if()
+      end // end state REG_PKT
+      ////////////////////////////////////////////
+      else if (state == 3) begin // state F_ERROR
+        error_in <= 1;
+      end // end state F_ERROR
+      ////////////////////////////////////////////
+      else if (state == 4) begin // state SEQ_ERROR
+      error_in                   <= 1;
       end
-      else if (state == 2) begin // state reg
+      else begin
         error_in <= 0;
-        next_error <= 0;
-        if (lsw != 4'hF) begin
-          next_state <= F_ERROR;
-        end
-      end
-      else if (state == 3) begin // F_ERROR
-          error_in <= F_ERROR;
-      end
-      else if (state == 4) begin // SEQ_ERROR
-        error_in <= SEQ_ERROR;
+        state <= 0;
       end
      end // end reset == 1
  end // end clk
-//////// End FSM /////////////////////
-always @(bus_data_in) begin // when input change
-  if ()
-end
-always @( * ) begin
-      lsw = bus_data_in[0]; // 0xF or not
-      msw = bus_data_in[15]; // 0x#
-      bus_data_out = out_data;
-      error = error_in;
-      nxt_state = next_state;
-      state_control = state;
-      nxt_error = next_error;
 
+always @(*) begin
+if (reset == 0) begin
+nxt_state        = RESET_STATE;
+nxt_error        =  0;
+end // end reset == 0
+else begin
+case (state)
+0: begin
+    nxt_error        =  0;
+    nxt_state        = FIST_PKT;
 end
+1: begin // state FIST_PKT
+if ({msw} != 'hF)  begin
+  nxt_state = F_ERROR;
+  nxt_error = 1;
+  end
+if ({lsw} != 'h1) begin
+      nxt_state = SEQ_ERROR;
+      nxt_error = 0;
+  end
+else begin
+   nxt_state = REG_PKT;
+   nxt_error = 0;
+   end
+end // end state FIST_PKT
+// ////////////////////////////////////////////
+2: begin // state REG_PKT
+if ({msw} != 'hF)  begin
+    nxt_state = F_ERROR;
+    nxt_error = 1;
+  end
+if ({lsw} != 'h2) begin
+    nxt_state = SEQ_ERROR;
+    nxt_error = 1;
+  end
+else begin
+   nxt_state = REG_PKT;
+   nxt_error = 0;
+   end
+end // end state REG_PKT
+// ////////////////////////////////////////////
+3: begin // state F_ERROR
+  nxt_state = FIST_PKT;
+  nxt_error = 0;
+end // end state F_ERROR
+// ////////////////////////////////////////////
+4: begin // state SEQ_ERROR
+  nxt_state = FIST_PKT;
+  nxt_error = 0;
+end // end SEQ_ERROR
+default: begin
+  nxt_state = REG_PKT;
+  nxt_error = 0;
+end
+endcase
+end //reset == 1
+bus_data_out = out_data;
+error = error_in;
+state_control = state;
+//////// End FSM /////////////////////
+end
+
 
 
 endmodule
