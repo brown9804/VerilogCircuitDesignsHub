@@ -29,15 +29,15 @@ parameter WORD_NUM = BUS_SIZE / WORD_SIZE
   input error_s);
 
 // *******  Resume
-// good
-// good
-// seq error
-// pkg error
-// good
-// good
-// good
-// pkg error
-// pkg error
+// good 1
+// good 2
+// seq error 4
+// good 1
+// good 2
+// seg error 4
+// good 1
+// F_error 3
+// good 1
 
 initial begin
 		$dumpfile("fsm_mux.vcd");
@@ -68,17 +68,13 @@ initial begin
   #4 reset = 0;
 
   // Begin test
-  repeat (6) begin
+  repeat (11) begin
   @(posedge clk);
   reset <= 0;
   end
 
-  repeat (6) begin
-  @(posedge clk);
-  #4 reset <= 1;
-  end
-
   @(posedge clk) begin
+    reset <= 1;
     {bus_data_in} <= 'hFFF0; // good
     end
 
@@ -91,7 +87,7 @@ initial begin
     end
 
   @(posedge clk) begin
-    {bus_data_in} <= 'hCCCC; // pkg error
+    {bus_data_in} <= 'hFCC0; // good
     end
 
 
@@ -100,19 +96,19 @@ initial begin
     end
 
   @(posedge clk) begin
-    {bus_data_in} <= 'hF992; // good
+    {bus_data_in} <= 'hF998; // seq error
     end
 
   @(posedge clk) begin
-    {bus_data_in} <= 'hFAA3; // good
+    {bus_data_in} <= 'hFAA0; // good
     end
 
   @(posedge clk) begin
-    {bus_data_in} <= 'h8888; // pkg error
+    {bus_data_in} <= 'hA881; // F_error
     end
 
   @(posedge clk) begin
-    {bus_data_in} <= 'h7777; // pkg error
+    {bus_data_in} <= 'hF770; // good
     end
 
 
