@@ -36,7 +36,7 @@ parameter WORD_NUM = BUS_SIZE / WORD_SIZE
 //******* For assign mem
 wire [BUS_SIZE-1:0] out_data;
 genvar i;
-
+reg [1:0] iter;
 //******* for fsm
 parameter RESET_STATE = 4'h0;
 parameter FIST_PKT = 4'h1;
@@ -86,10 +86,12 @@ always @ (posedge clk)
        begin
         state <= RESET_STATE;
         error_in <= 0;
+        iter <= 0;
        end // end reset zero
 // Logic Bits: 15, 14, 13, 12,          11, 10, 9, 8,      7 , 6, 5, 4,    3,2, 1, 0
     else begin // if data in 0xFFFF XXXX YYYY ####
       state <= nxt_state;
+      iter <= iter + 1;
       lsw <= bus_data_in[WORD_NUM -1:0]; // 4:0
       msw <=  bus_data_in[BUS_SIZE-1:3*WORD_SIZE]; // 15:12
       // Waveform logic
@@ -107,14 +109,17 @@ always @ (posedge clk)
       ////////////////////////////////////////////
       else if (state == F_ERROR) begin // state F_ERROR = 3
         error_in <= 1;
+        iter <= 0;
       end // end state F_ERROR
       ////////////////////////////////////////////
       else if (state == SEQ_ERROR) begin // state SEQ_ERROR = 4
       error_in   <= 1;
+      iter <= 0;
       end
       else begin
         error_in <= 0;
         state <= 0;
+        iter <= 0;
       end
      end // end reset == 1
  end // end clk
@@ -135,7 +140,7 @@ if ({msw} != 'hF)  begin
   nxt_state = F_ERROR;
   nxt_error = 1;
   end
-if ({lsw} != 'h1) begin
+if ({lsw} != {iter}) begin
       nxt_state = SEQ_ERROR;
       nxt_error = 0;
   end
@@ -150,7 +155,7 @@ if ({msw} != 'hF)  begin
     nxt_state = F_ERROR;
     nxt_error = 1;
   end
-if ({lsw} != 'h2) begin
+if ({lsw} != {iter}) begin
     nxt_state = SEQ_ERROR;
     nxt_error = 1;
   end
