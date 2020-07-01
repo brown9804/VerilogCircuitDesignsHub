@@ -3,7 +3,6 @@
 //	Mayo, 2020
 //	timna.brown@ucr.ac.cr
 
-
 `ifndef CMOS_CELLS
 `define CMOS_CELLS
 
