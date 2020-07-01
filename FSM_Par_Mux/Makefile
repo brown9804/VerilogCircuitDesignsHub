@@ -2,9 +2,15 @@
 
 # Making verilog makefile
 # Makefile to simulate Verilog HDL designs under OSX.
-###
-######## belindabrownr@gmail.com
-###
+
+##--------------------------------Makefile------------------------------------
+##
+##			 Copyright (C) 2020 by 
+##		Belinda Brown Ramírez (belindabrownr04@gmail.com)
+##	
+##
+##-----------------------------------------------------------------------------
+
 
 
 # 							Makefile logic:
