@@ -10,9 +10,12 @@
 # Modify this part with your own files.
 
 
-TESTBENCHelements = BancoPruebas_Elementos
+TESTBENCHelements = tb_elements
 SRCSelements	  = $(TESTBENCHelements).v
-VCDelements = and_two_input_gate_tester flip_flop_single_type_D_tester inversor_as_not_gate_tester mux2_1_1bit_tester mux2_1_2bit_tester or_two_input_gate_tester
+VCDelements = t_and_two_input_gate t_flip_flop_single_type_D t_inversor_as_not_gate t_mux2_1_1bit t_mux2_1_2bit t_or_two_input_gate
+SRC = ./src/
+TESTERS = ./testers/
+TESTBENCHES = ./testbenches/
 #******************************************************************************
 
 #dependencies $ SRCSelements
@@ -23,6 +26,9 @@ VCDelements = and_two_input_gate_tester flip_flop_single_type_D_tester inversor_
 #******************************************************************************
 # Standard commands design elements - Do not modify
 #******************************************************************************
+all: desingelements
+
+
 .PHONY: desingelements
 desingelements: $(TESTBENCHelements).vvp
 
@@ -31,7 +37,7 @@ desingelements: $(TESTBENCHelements).vvp
 # $ ^ right
 
 #each time you are asked for a vvp you need one with con.v
-%.vvp: %.v
+%.vvp: $(TESTBENCHES)%.v
 	iverilog -o $@ $^
 #simulate the dump
 
