@@ -10,7 +10,7 @@
 # Modify this part with your own files.
 
 
-TESTBENCH = BancoPruebamux2_1_2bits_reset_ff
+TESTBENCH = tb_mux21
 SRCS	  = $(TESTBENCH).v
 VCD = mux2_1_con_Flip_flop
 #******************************************************************************
@@ -31,7 +31,7 @@ all: $(TESTBENCH).vvp
 # $ ^ right
 
 #each time you are asked for a vvp you need one with con.v
-%.vvp: %.v
+%.vvp: ./testbenches/%.v
 	iverilog -o $@ $^
 #simulate the dump
 
@@ -44,7 +44,7 @@ $(VCD).vcd $(TESTBENCH)_log.txt: $(TESTBENCH).vvp
 # behavioral design automatically through synthesis
 .PHONY: yosys
 yosys:
-	 yosys filesonyosys.ys
+	 yosys ./yosys/filesonyosys.ys
 
 
 
