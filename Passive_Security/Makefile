@@ -10,9 +10,10 @@
 # Modify this part with your own files.
 
 
-TESTBENCH = TestBench
+TESTBENCH = tb_passive
 SRCS	  = $(TESTBENCH).v
 VCD = Passive
+
 #******************************************************************************
 
 #dependencies $ SRCS
@@ -35,7 +36,7 @@ lint:
 # $ ^ right
 
 #each time you are asked for a vvp you need one with con.v
-%.vvp: %.v
+%.vvp: ./testbenches/%.v
 	iverilog -o $@ $^
 #simulate the dump
 
@@ -46,17 +47,17 @@ $(VCD).vcd $(TESTBENCH)_log.txt: $(TESTBENCH).vvp
 
 .PHONY: yosys
 yosys:
-		yosys filesonyosys.ys
+		yosys ./yosys/filesonyosys.ys
 
 #Replace synth module name
 replace:
-	sed -i 's/Passive_b/Passive_bsynth/g' Passive_bsyn.v
+	sed -i 's/Passive_b/Passive_syn/g' Passive_syn.v
 
 
 #AUTOINST
 # You can autoinst whatever script that need to update
 autoinst:
-	emacs --batch Passive_b_autoinst.v -f verilog-batch-auto
+	emacs --batch ./src/Passive_b_autoinst.v -f verilog-batch-auto
 
 
 
