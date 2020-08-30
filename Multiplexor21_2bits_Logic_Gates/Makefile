@@ -14,7 +14,7 @@
 # Modify this part with your own files.
 
 
-TESTBENCHmuxrff = BancoPruebamux2_1_2bits_reset_ff
+TESTBENCHmuxrff = tb_mux21
 SRCSmuxrff	  = $(TESTBENCHmuxrff).v
 VCDmuxrff = mux2_1_con_Flip_flop
 #******************************************************************************
@@ -35,7 +35,7 @@ muxrff: $(TESTBENCHmuxrff).vvp
 # $ ^ right
 
 #each time you are asked for a vvp you need one with con.v
-%.vvp: %.v
+%.vvp: ./testbenches/%.v
 	iverilog -o $@ $^
 #simulate the dump
 
