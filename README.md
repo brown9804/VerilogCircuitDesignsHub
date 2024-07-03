@@ -1,4 +1,13 @@
-# Verilog Different Arch
+# Verilog Circuit Designs 
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+[![GitHub](https://img.shields.io/badge/--181717?logo=github&logoColor=ffffff)](https://github.com/)
+[brown9804](https://github.com/brown9804)
+
+----------
 
 Developing different projects in order to understand how the Icarus Verilog tools work with GTkWave and Yosys.
 Each subfolder contains a different project, along with its commenting code and explanation. In order to run it you must install Icarus Verilog, GTkWave and Yosys. You should consider that for each operating system where you want to install it, the guidelines that you must implement change. So you should search the internet how to properly install these tools.
